@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Brille24\SyliusCustomerOptionsPlugin\Traits;
 
 use Brille24\SyliusCustomerOptionsPlugin\Entity\OrderItemOptionInterface;
+use Doctrine\Common\Collections\Collection;
 
 interface OrderItemCustomerOptionCapableTraitInterface
 {
@@ -26,4 +27,9 @@ interface OrderItemCustomerOptionCapableTraitInterface
      * @return array
      */
     public function getCustomerOptionConfigurationAsSimpleArray(): array;
+
+    /**
+     * @return Collection|OrderItemOptionInterface[]
+     */
+    public function getCustomerOptions(): Collection;
 }

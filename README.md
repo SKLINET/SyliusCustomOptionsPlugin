@@ -36,7 +36,7 @@ From: [shop_dir]/vendor/brille24/sylius-customer-options-plugin/test/Application
 To: [shop_dir]/templates
 ```
 
-In order to use the customer options, you need to override the product and order item.
+In order to use the customer options, you need to override the product, product variant and order item.
 ```php
 use Brille24\SyliusCustomerOptionsPlugin\Entity\ProductInterface;
 use Brille24\SyliusCustomerOptionsPlugin\Traits\ProductCustomerOptionCapableTrait;
@@ -54,6 +54,19 @@ class Product extends BaseProduct implements ProductInterface {
         $this->customerOptionCapableConstructor();
     }
     // ...
+}
+```
+
+```php
+use Brille24\SyliusCustomerOptionsPlugin\Traits\ProductVariantCustomerOptionCapableTraitInterface;
+use Brille24\SyliusCustomerOptionsPlugin\Traits\ProductVariantCustomerOptionCapableTrait;
+use Sylius\Component\Core\Model\ProductVariant as BaseProductVariant;
+
+class ProductVariant extends BaseProductVariant implements ProductVariantCustomerOptionCapableTraitInterface
+{
+    use ProductVariantCustomerOptionCapableTrait;
+    
+    ...
 }
 ```
 
@@ -77,6 +90,37 @@ class OrderItem extends BaseOrderItem implements OrderItemInterface
     // ...
 }
 ```
+
+# API V2 support
+
+1. Plugin defines new resources (CustomerOption). Please open API documentation for more details.
+
+2. To create order item with customer option please call endpoint PATCH `/api/v2/shop/orders/{tokenValue}/items`
+The endpoint request body accepts besides productVariant and quantity property `customerOptions`, that contains array of selected/filled customer options
+```JSON
+{
+  "productVariant": "PRODUCT_VARIANT_IRI",
+  "quantity": 1,
+  "customerOptions": {
+    "CUSTOMER_OPTION_CODE_FIRST": "Value 1",
+    "CUSTOMER_OPTION_CODE_SECOND": "Value 2",
+    ...  
+  }
+}
+```
+
+3. If you want to edit cart item customerOption, you can call endpoint PATCH `/api/v2/shop/order-items/{id}/update-customer-options`, where {id} is orderItem id
+Request body accepts same property.
+```JSON
+{
+  "customerOptions": {
+    "CUSTOMER_OPTION_CODE_FIRST": "New value 1",
+    "CUSTOMER_OPTION_CODE_SECOND": "New value 2",
+    ...  
+  }
+}
+```
+
 
 * If you also want default data you need to copy over the `brille24_sylius_customer_options_plugin_fixtures.yaml` file from the package directory and run
 ```bash

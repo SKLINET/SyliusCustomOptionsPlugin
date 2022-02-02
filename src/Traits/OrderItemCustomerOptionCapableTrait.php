@@ -25,6 +25,11 @@ trait OrderItemCustomerOptionCapableTrait
      */
     protected $configuration;
 
+    /**
+     * @var Collection|OrderItemOptionInterface[]
+     */
+    protected $customerOptions;
+
     public function __construct()
     {
         $this->configuration = new ArrayCollection();
@@ -36,6 +41,11 @@ trait OrderItemCustomerOptionCapableTrait
     public function setCustomerOptionConfiguration(array $configuration): void
     {
         $this->configuration = new ArrayCollection($configuration);
+    }
+
+    public function getCustomerOptions(): Collection
+    {
+       return $this->configuration;
     }
 
     /**

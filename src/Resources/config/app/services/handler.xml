@@ -15,5 +15,17 @@
             <argument type="service" id="security.token_storage" />
             <argument>brille24_failed_price_import_product_list</argument>
         </service>
+
+        <!-- API v2 handlers  -->
+        <service class="Brille24\SyliusCustomerOptionsPlugin\CommandHandler\Cart\UpdateItemCustomerOptionsHandler"
+                 id="brille24.sylius_customer_options_plugin.command_handler.cart.update_item_customer_options_handler"
+        >
+            <tag name="messenger.message_handler" bus="sylius.command_bus" />
+            <tag name="messenger.message_handler" bus="sylius_default.bus" />
+            <argument type="service" id="request_stack"/>
+            <argument type="service" id="sylius.repository.order_item"/>
+            <argument type="service" id="brille24.sylius_customer_options_plugin.services.order_item_option_updater"/>
+        </service>
+
     </services>
 </container>

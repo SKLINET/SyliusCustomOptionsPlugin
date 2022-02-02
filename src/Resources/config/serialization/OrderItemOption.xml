@@ -1,0 +1,107 @@
+<?xml version="1.0" ?>
+
+<!--
+
+ This file is part of the Sylius package.
+
+ (c) Paweł Jędrzejewski
+
+ For the full copyright and license information, please view the LICENSE
+ file that was distributed with this source code.
+
+-->
+
+<serializer xmlns="http://symfony.com/schema/dic/serializer-mapping"
+            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xsi:schemaLocation="http://symfony.com/schema/dic/serializer-mapping https://symfony.com/schema/dic/serializer-mapping/serializer-mapping-1.0.xsd"
+>
+    <class name="Brille24\SyliusCustomerOptionsPlugin\Entity\OrderItemOption">
+        <attribute name="id">
+            <group>admin:order:read</group>
+            <group>admin:order_item:read</group>
+            <group>shop:cart:read</group>
+            <group>shop:order:account:read</group>
+            <group>shop:order_item:read</group>
+        </attribute>
+        <attribute name="customerOption">
+
+        </attribute>
+        <attribute name="customerOptionType">
+            <group>admin:order:read</group>
+            <group>admin:order_item:read</group>
+            <group>shop:cart:read</group>
+            <group>shop:order:account:read</group>
+            <group>shop:order_item:read</group>
+        </attribute>
+        <attribute name="customerOptionCode">
+            <group>admin:order:read</group>
+            <group>admin:order_item:read</group>
+            <group>shop:cart:read</group>
+            <group>shop:order:account:read</group>
+            <group>shop:order_item:read</group>
+        </attribute>
+        <attribute name="customerOptionName">
+            <group>admin:order:read</group>
+            <group>admin:order_item:read</group>
+            <group>shop:cart:read</group>
+            <group>shop:order:account:read</group>
+            <group>shop:order_item:read</group>
+        </attribute>
+        <attribute name="customerOptionValue">
+            <group>admin:order:read</group>
+            <group>admin:order_item:read</group>
+            <group>shop:cart:read</group>
+            <group>shop:order:account:read</group>
+            <group>shop:order_item:read</group>
+        </attribute>
+        <attribute name="customerOptionValueCode">
+            <group>admin:order:read</group>
+            <group>admin:order_item:read</group>
+            <group>shop:cart:read</group>
+            <group>shop:order:account:read</group>
+            <group>shop:order_item:read</group>
+        </attribute>
+        <attribute name="customerOptionValueName">
+            <group>admin:order:read</group>
+            <group>admin:order_item:read</group>
+            <group>shop:cart:read</group>
+            <group>shop:order:account:read</group>
+            <group>shop:order_item:read</group>
+        </attribute>
+        <attribute name="optionValue">
+            <group>admin:order:read</group>
+            <group>admin:order_item:read</group>
+            <group>shop:cart:read</group>
+            <group>shop:order:account:read</group>
+            <group>shop:order_item:read</group>
+        </attribute>
+        <attribute name="fixedPrice">
+            <group>admin:order:read</group>
+            <group>admin:order_item:read</group>
+            <group>shop:cart:read</group>
+            <group>shop:order:account:read</group>
+            <group>shop:order_item:read</group>
+        </attribute>
+        <attribute name="pricingType">
+            <group>admin:order:read</group>
+            <group>admin:order_item:read</group>
+            <group>shop:cart:read</group>
+            <group>shop:order:account:read</group>
+            <group>shop:order_item:read</group>
+        </attribute>
+        <attribute name="percent">
+            <group>admin:order:read</group>
+            <group>admin:order_item:read</group>
+            <group>shop:cart:read</group>
+            <group>shop:order:account:read</group>
+            <group>shop:order_item:read</group>
+        </attribute>
+        <attribute name="fileContent">
+            <group>admin:order:read</group>
+            <group>admin:order_item:read</group>
+            <group>shop:cart:read</group>
+            <group>shop:order:account:read</group>
+            <group>shop:order_item:read</group>
+        </attribute>
+    </class>
+</serializer>

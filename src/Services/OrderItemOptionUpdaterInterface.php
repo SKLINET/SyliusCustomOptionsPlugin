@@ -18,4 +18,11 @@ interface OrderItemOptionUpdaterInterface
      * @param bool $updatePrice
      */
     public function updateOrderItemOptions(OrderItemInterface $orderItem, array $data, bool $updatePrice = true): void;
+
+    /**
+     * Remove all order item customer options
+     *
+     * @param OrderItemInterface $orderItem
+     */
+    public function removeOrderItemOptions(OrderItemInterface $orderItem): void;
 }

@@ -1,0 +1,33 @@
+<?xml version="1.0" ?>
+
+<resources xmlns="https://api-platform.com/schema/metadata"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="https://api-platform.com/schema/metadata https://api-platform.com/schema/metadata/metadata-2.0.xsd"
+>
+    <resource class="Brille24\SyliusCustomerOptionsPlugin\Entity\CustomerOptions\CustomerOption" shortName="CustomerOption">
+        <collectionOperations />
+
+        <itemOperations>
+
+            <itemOperation name="shop_get">
+                <attribute name="method">GET</attribute>
+                <attribute name="path">/shop/brille24/customer-options/{id}</attribute>
+                <attribute name="normalization_context">
+                    <attribute name="groups">shop:order_item:read</attribute>
+                    <attribute name="groups">shop:product:read</attribute>
+                    <attribute name="groups">shop:product_variant:read</attribute>
+                    <attribute name="groups">shop:brillie24:customer_option:read</attribute>
+                </attribute>
+            </itemOperation>
+
+        </itemOperations>
+
+        <property name="id" identifier="true" writable="false" />
+        <property name="type" readable="true"  />
+        <property name="required" readable="true"  />
+        <property name="code" readable="true"  />
+        <property name="values" readable="true"  />
+        <property name="configuration" readable="true"  />
+
+    </resource>
+</resources>

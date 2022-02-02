@@ -207,7 +207,7 @@ class CustomerOption implements CustomerOptionInterface
     /**
      * {@inheritdoc}
      */
-    public function getGroupAssociations(): ArrayCollection
+    public function getGroupAssociations(): Collection
     {
         return $this->groupAssociations;
     }
@@ -215,7 +215,7 @@ class CustomerOption implements CustomerOptionInterface
     /**
      * {@inheritdoc}
      */
-    public function setGroupAssociations(ArrayCollection $assoc): void
+    public function setGroupAssociations(Collection $assoc): void
     {
         $this->groupAssociations = $assoc;
     }

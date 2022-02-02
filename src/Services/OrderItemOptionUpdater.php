@@ -56,7 +56,10 @@ final class OrderItemOptionUpdater implements OrderItemOptionUpdaterInterface
         foreach ($data as $customerOptionCode => $newValue) {
             $orderItemOption = $orderItemOptions[$customerOptionCode] ?? null;
             $customerOption  = $this->customerOptionRepository->findOneByCode($customerOptionCode);
-            Assert::notNull($customerOption);
+            Assert::notNull(
+                $customerOption,
+                sprintf('No customer option has been found by "%s" code', $customerOptionCode)
+            );
 
             if (CustomerOptionTypeEnum::FILE === $customerOption->getType()) {
                 // @TODO: Find a way to handle file options
@@ -127,5 +130,15 @@ final class OrderItemOptionUpdater implements OrderItemOptionUpdaterInterface
         }
 
         $this->entityManager->flush();
+    }
+
+    /** {@inheritdoc} */
+    public function removeOrderItemOptions(OrderItemInterface $orderItem): void
+    {
+        foreach ($orderItem->getCustomerOptionConfiguration() as $item) {
+            $this->entityManager->remove($item);
+        }
+
+        $orderItem->setCustomerOptionConfiguration(array());
     }
 }

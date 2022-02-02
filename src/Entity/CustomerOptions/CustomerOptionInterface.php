@@ -100,12 +100,12 @@ interface CustomerOptionInterface extends ResourceInterface, CodeAwareInterface,
     /**
      * @param ArrayCollection $assoc
      */
-    public function setGroupAssociations(ArrayCollection $assoc): void;
+    public function setGroupAssociations(Collection $assoc): void;
 
     /**
      * @return ArrayCollection
      */
-    public function getGroupAssociations(): ArrayCollection;
+    public function getGroupAssociations(): Collection;
 
     /**
      * @param CustomerOptionAssociationInterface $assoc

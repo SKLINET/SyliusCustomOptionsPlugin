@@ -37,6 +37,11 @@ trait ProductCustomerOptionCapableTrait
      */
     protected $customerOptionValuePrices;
 
+    /**
+     * @var array|CustomerOptionInterface[]
+     */
+    protected $customerOptions;
+
     public function __construct()
     {
         $this->customerOptionValuePrices = new ArrayCollection();
@@ -120,7 +125,6 @@ trait ProductCustomerOptionCapableTrait
         if ($customerOptionGroup === null) {
             return [];
         }
-
         return $customerOptionGroup->getOptionAssociations()->map(static function (
             CustomerOptionAssociationInterface $association
         ): ?CustomerOptionInterface {
