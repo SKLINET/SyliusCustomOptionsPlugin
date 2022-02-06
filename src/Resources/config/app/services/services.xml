@@ -1,8 +1,8 @@
 <container xmlns="http://symfony.com/schema/dic/services">
     <services>
         <service
-                class="Brille24\SyliusCustomerOptionsPlugin\Services\CustomerOptionValueResolver"
-                id="brille24.customer_options_plugin.services.customer_option_value_resolver"/>
+            class="Brille24\SyliusCustomerOptionsPlugin\Services\CustomerOptionValueResolver"
+            id="brille24.customer_options_plugin.services.customer_option_value_resolver"/>
 
         <service class="Brille24\SyliusCustomerOptionsPlugin\Services\CustomerOptionRecalculator"
                  id="brille24.customer_options_plugin.services.order_prices_recalculator">

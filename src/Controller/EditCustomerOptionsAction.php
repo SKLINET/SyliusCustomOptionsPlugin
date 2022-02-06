@@ -59,8 +59,8 @@ class EditCustomerOptionsAction extends AbstractController
         Assert::notNull($orderItem);
 
         $this->eventDispatcher->dispatch(
+            new ResourceControllerEvent($orderItem),
             'brille24.order_item.pre_update',
-            new ResourceControllerEvent($orderItem)
         );
 
         /** @var OrderInterface $order */
@@ -78,8 +78,8 @@ class EditCustomerOptionsAction extends AbstractController
             $this->orderItemOptionUpdater->updateOrderItemOptions($orderItem, $orderItemForm->getData(), $this->recalculatePrice);
 
             $this->eventDispatcher->dispatch(
+                new ResourceControllerEvent($orderItem),
                 'brille24.order_item.post_update',
-                new ResourceControllerEvent($orderItem)
             );
 
             return $this->redirectToRoute('sylius_admin_order_show', ['id' => $order->getId()]);
