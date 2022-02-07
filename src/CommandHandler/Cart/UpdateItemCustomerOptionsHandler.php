@@ -6,6 +6,7 @@ namespace Brille24\SyliusCustomerOptionsPlugin\CommandHandler\Cart;
 
 use Brille24\SyliusCustomerOptionsPlugin\Command\Cart\UpdateItemCustomerOptions;
 use Brille24\SyliusCustomerOptionsPlugin\Entity\OrderItemInterface;
+use Brille24\SyliusCustomerOptionsPlugin\Exceptions\CustomerOptionValidatorException;
 use Brille24\SyliusCustomerOptionsPlugin\Services\OrderItemOptionUpdaterInterface;
 use Sylius\Component\Core\Repository\OrderItemRepositoryInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
@@ -31,22 +32,14 @@ final class UpdateItemCustomerOptionsHandler implements MessageHandlerInterface
 
     public function __invoke(UpdateItemCustomerOptions $updateItemCustomerOptions): OrderItemInterface
     {
-        // TODO: replace request
-        $request = $this->requestStack->getCurrentRequest();
-        $itemId = $request->get('id');
-
-        Assert::notNull($itemId, 'Item id has not been found in current request');
-
-        // TODO: if request will be replaced this line is not necessary
-        $updateItemCustomerOptions->id = $itemId;
-
-        ////////////////////////////////////////////////////////////////////////////
-
         /** @var OrderItemInterface|null $orderItem */
-        $orderItem = $this->orderItemRepository->find((int)$updateItemCustomerOptions->id);
+        $orderItem = $this->orderItemRepository->find((int)$updateItemCustomerOptions->orderItemId);
 
         // TODO: maybe useless as api platform if order item with passed id exists?
-        Assert::notNull($orderItem, sprintf('Order item with id "%s" has not been found', $itemId));
+        Assert::notNull(
+            $orderItem,
+            sprintf('Order item with id "%s" has not been found', $updateItemCustomerOptions->orderItemId)
+        );
         //
         Assert::isInstanceOf($orderItem, OrderItemInterface::class);
 
@@ -55,6 +48,23 @@ final class UpdateItemCustomerOptionsHandler implements MessageHandlerInterface
             Assert::true(is_scalar($newValue), 'Value of customerOption\'s optionCode can be only scalar value.');
 
             $customerOptions[][$optionCode] = $newValue;
+        }
+
+        // Check if passed customer options exists in order item
+        $existingCustomerOptionsKeys = array_keys($orderItem->getCustomerOptionConfigurationAsSimpleArray());
+
+        foreach ($customerOptions as $customerOption) {
+            foreach ($customerOption as $key => $value) {
+                if (!in_array($key, $existingCustomerOptionsKeys)) {
+                    throw new CustomerOptionValidatorException(
+                        sprintf(
+                            'You cannot change customer option with key "%s" as this customer option not exists in passed order item "%s"',
+                            $key,
+                            $updateItemCustomerOptions->orderItemId
+                        )
+                    );
+                }
+            }
         }
 
         // TODO: add some aditional validation? (if user has sent required customer options, etc)

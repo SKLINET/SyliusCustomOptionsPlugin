@@ -109,8 +109,8 @@ The endpoint request body accepts besides productVariant and quantity property `
 }
 ```
 
-3. If you want to edit cart item customerOption, you can call endpoint PATCH `/api/v2/shop/order-items/{id}/update-customer-options`, where {id} is orderItem id
-Request body accepts same property.
+3. If you want to edit cart item customerOption, you can call endpoint PATCH `/api/v2/shop/orders/{tokenValue}/items/{orderItemId}/update-customer-options`
+Request body accepts same property as upper one.
 ```JSON
 {
   "customerOptions": {
