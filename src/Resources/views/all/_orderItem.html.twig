@@ -1,5 +1,5 @@
 {% macro renderPrice(orderItem) %}
-    {% import "@SyliusShop/Common/Macro/money.html.twig" as money %}
+    {% import "@SyliusAdmin/Common/Macro/money.html.twig" as money %}
     {% set priceType = orderItem.pricingType %}
     {% if priceType == 'FIXED_AMOUNT' and orderItem.fixedPrice != 0 %}
         ( {{ money.convertAndFormat(orderItem.fixedPrice) }} )

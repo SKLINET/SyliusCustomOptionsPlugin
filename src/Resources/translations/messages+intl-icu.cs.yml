@@ -1,0 +1,109 @@
+# Message for the menu entry
+sylius:
+    menu:
+        admin:
+            main:
+                catalog:
+                    customer_options: Možnosti zákazníka
+                    customer_option_groups: Skupiny zákaznických možností
+                order_item:
+                    edit: Upravit možnosti zákazníka pro položku objednávky
+
+
+# Brille24
+brille24:
+    ui:
+        customer_option: Možnost zákazníka
+        customer_options: Možnosti zákazníka
+        customer_option_groups: Skupiny zákaznických možností
+        customer_option_group: Skupina zákaznických možností
+        required: Požadované
+        product_customization: Přizpůsobení produktu
+        file_content: Obsah souboru
+        pricing:
+            fixed_amount: Pevná částka
+            percent: Percento
+        customization_total: Úpravy celkem
+        by_product_list: Podle seznamu produktů
+    form:
+        customer_options:
+            subheader: Spravujte své zákaznické možnosti
+            type:
+                text: Text
+                select: Select
+                multi_select: Multi Select
+                file: Soubor
+                date: Datum
+                datetime: Datum + čas
+                number: Číslo
+                boolean: Boolean
+            import_prices: Importovat ceny
+            import: Importovat
+        customer_option_groups:
+            subheader: Spravujte své skupiny zákaznických možností
+            select: Select
+            buttons:
+                add_option: Přidat možnost
+                delete_option: Odstranit možnost
+                add_validator: Přidat validátor
+                delete_validator: Odstranit validátor
+        customer_option_value:
+            price: Cena
+        config:
+            min:
+                length: Minimální délka
+                file_size: Minimální velikost
+                date: Minimální datum
+                number: Minimální počet
+            max:
+                length: Maximální délka
+                file_size: Maximální velikost
+                date: Maximální datum
+                number: Maximální počet
+            default_value: Výchozí hodnota
+            allowed_types: Povolené typy souborů
+        validators:
+            condition:
+                greater: ">"
+                greater_equal: ">="
+                equal: "=="
+                lesser_equal: "<="
+                lesser: "<"
+                in_set: Je v sadě
+                not_in_set: Není v sadě
+            fields:
+                customer_option: Možnost zákazníka
+                comparator: Comparator
+                value:
+                    default: Hodnota
+                    text: Délka textu
+                    set: Nastavit
+                message: Zpráva
+            error_message: Chybová zpráva
+            buttons:
+                add_condition: Přidat podmínku
+                delete_condition: Smazat podmínku
+                add_constraint: Přidat omezení
+                delete_constraint: Odstranit omezení
+
+    grid:
+        options_remaining: "{count, plural, =0 {} other {and # more}}"
+        options_empty: Nic k zobrazení
+
+    email:
+        customer_option_price_import_failed: 'Import se nezdařil'
+
+    flashes:
+        customer_option_price_import_error: Nelze importovat ceny
+        customer_option_prices_imported:
+            csv: Imported %count% customer option value price(s) from csv file
+            product_list: Imported %count% customer option value price(s) for the product(s) [%products%] in channel "%channel%"
+            product_list_with_date: Imported %count% customer option value price(s) for the product(s) [%products%] in channel "%channel%" from "%from%" to "%to%"
+        customer_option_prices_import_failed:
+            csv: Failed to import %count% customer option value price(s) from csv file
+            product_list: Failed to import %count% customer option value price(s) for the product(s) [%products%] in channel "%channel%"
+            product_list_with_date: Failed to import %count% customer option value price(s) for the product(s) [%products%] in channel "%channel%" from "%from%" to "%to%"
+
+    validation:
+        customer_option_value_price_dates_overlap: Překrývá se s jiným obdobím
+        delete_not_allowed: 'Není povoleno smazat zákaznickou možnost, protože je použita v objednávce'
