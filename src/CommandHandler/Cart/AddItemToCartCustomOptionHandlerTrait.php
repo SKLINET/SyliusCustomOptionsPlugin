@@ -19,6 +19,12 @@ trait AddItemToCartCustomOptionHandlerTrait
     ): void {
         $customerOptions = null;
 
+        if (!is_array($addItemToCartCustomOption->getCustomerOptions())) {
+            $orderItemOptionUpdater->removeOrderItemOptions($orderItem);
+
+            return;
+        }
+
         // Check if all required data has been sent
         foreach ($addItemToCartCustomOption->getCustomerOptions() as $optionCode => $newValue) {
             Assert::true(is_scalar($newValue), 'Value of customerOption\'s optionCode can be only scalar value.');
